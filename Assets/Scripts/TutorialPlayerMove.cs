@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class TutorialPlayerMove : MonoBehaviour
 {
     [SerializeField] private float jumpPower = 0;
     [SerializeField] private float speed = 5f;
@@ -83,7 +83,7 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/) //����ϴ� �츮 �ع������� �����(����鼭 ���� �ܾƿ� �ϴ¹� �����)
+        if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/)
         {
             transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
             //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z)
