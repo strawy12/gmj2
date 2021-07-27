@@ -48,10 +48,7 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = Vector2.zero;
             rigid.gravityScale = 0f;
             StartCoroutine(Damaged());
-<<<<<<< HEAD
             hp--;
-=======
->>>>>>> Cyeon
             UIManager.Inst.SubHearts(hp);
         }
 
@@ -91,22 +88,12 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/)
         {
             transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
-<<<<<<< HEAD
-            //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z)
         }
 
         else
         {
             transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
-=======
-            //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z);
->>>>>>> Cyeon
         }
-        else
-        {
-            transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
-        }
-        
     }
 
     private bool IsGrounded()

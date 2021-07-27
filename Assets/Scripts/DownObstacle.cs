@@ -18,17 +18,16 @@ public class DownObstacle : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.x - GameManager.Inst.PlayerMove.gameObject.transform.position.x < 8.5f && !isStop)
-        {
-            if(!isDestroy)
-            {
-                StartCoroutine(DestroyObj());
-                isDestroy = true;
-            }
+        if (Mathf.Abs(transform.localPosition.x - GameManager.Inst.PlayerMove.gameObject.transform.position.x) > 8f) return;
 
-            isStop = true;
-            rigid.gravityScale = 10f;
+        if (!isDestroy)
+        {
+            StartCoroutine(DestroyObj());
+            isDestroy = true;
         }
+
+        isStop = true;
+        rigid.gravityScale = 10f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
