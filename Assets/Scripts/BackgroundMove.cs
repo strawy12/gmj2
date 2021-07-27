@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BackgroundMove : MonoBehaviour
 {
+
     [SerializeField]
     private float speed = 0.1f;
 

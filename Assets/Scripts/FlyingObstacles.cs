@@ -13,6 +13,7 @@ public class FlyingObstacles : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.Inst.pool.MakeObj("obstacle_1");
+            Destroy(gameObject);
         }
     }
 

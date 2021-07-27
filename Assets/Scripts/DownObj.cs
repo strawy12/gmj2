@@ -6,12 +6,13 @@ public class DownObj : MonoBehaviour
 {
     private Collider2D col;
     [SerializeField] private float maxPosY;
+    [SerializeField]
+    private float speed = 7f;
 
     void Start()
     {
         col = GetComponent<Collider2D>();
-        
-         maxPosY = transform.localPosition.y - maxPosY;
+        maxPosY = transform.localPosition.y - maxPosY;
     }
 
     void Update()
