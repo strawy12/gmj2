@@ -10,9 +10,13 @@ public class UpObstacle : MonoBehaviour
     void Start()
     {
         col = GetComponent<Collider2D>();
+<<<<<<< HEAD
 
          maxPosY = transform.localPosition.y + maxPosY;
         
+=======
+        maxPosY = -2;
+>>>>>>> cheoljin
     }
 
     void Update()
