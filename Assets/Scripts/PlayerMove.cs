@@ -48,6 +48,8 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = Vector2.zero;
             rigid.gravityScale = 0f;
             StartCoroutine(Damaged());
+            hp--;
+            UIManager.Inst.SubHearts(hp);
         }
 
         else
@@ -83,11 +85,17 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/) //����ϴ� �츮 �ع������� �����(����鼭 ���� �ܾƿ� �ϴ¹� �����)
+        if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/)
         {
             transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
+<<<<<<< HEAD
             //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z)
         }
+=======
+            //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z);
+        }
+
+>>>>>>> minyoung
         else
         {
             transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
@@ -158,7 +166,7 @@ public class PlayerMove : MonoBehaviour
 
             hp--;
             StartCoroutine(Damaged());
-            //UIManager.Inst.SubHearts(hp);
+            UIManager.Inst.SubHearts(hp);
         }
     }
 
@@ -188,8 +196,10 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.enabled = true;
             yield return new WaitForSeconds(0.15f);
         }
+
         isDamage = false;
     }
+
     private IEnumerator Instargram()
     {
         yield return new WaitForSeconds(3f);

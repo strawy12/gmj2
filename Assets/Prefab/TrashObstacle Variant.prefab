@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 746463660404644436, guid: a9628d1b7572bf847a1f5d74665582fa, type: 3}
       propertyPath: m_Name
-      value: TrashObstacle
+      value: TrashObstacle Variant
       objectReference: {fileID: 0}
     - target: {fileID: 746463660404644436, guid: a9628d1b7572bf847a1f5d74665582fa, type: 3}
       propertyPath: m_IsActive
