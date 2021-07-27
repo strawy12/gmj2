@@ -38,10 +38,29 @@ public class GameManager : MonoBehaviour
     private float maxTime = 1f;
     private float timer = 0f;
     private int jumpCnt = 3;
+<<<<<<< HEAD
 
 
     void Update()
     { 
+=======
+    private float minPosY = -6f;
+    public PlayerMove PlayerMove { get; private set; }
+
+    public float MinPosY()
+    {
+        return minPosY;
+    }
+
+    private void Start()
+    {
+        PlayerMove = FindObjectOfType<PlayerMove>();
+    }
+
+    void Update()
+    {
+        if (jumpCnt >= 3) return;
+>>>>>>> minyoung
 
         timer += Time.deltaTime;
 

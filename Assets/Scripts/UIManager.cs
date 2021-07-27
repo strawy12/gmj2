@@ -21,7 +21,10 @@ public class UIManager : MonoBehaviour
             return inst;
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> minyoung
     private void Awake()
     {
         UIManager[] ums = FindObjectsOfType<UIManager>();
@@ -42,11 +45,14 @@ public class UIManager : MonoBehaviour
     Text jumpCount;
     [SerializeField]
     GameObject hearts;
+<<<<<<< HEAD
     [SerializeField]
     Slider gauge_AI;
 
     private int maxValue = 100;
     private int addHeart = 0;
+=======
+>>>>>>> minyoung
 
     void Update()
     {
@@ -54,6 +60,7 @@ public class UIManager : MonoBehaviour
         jumpCount.text = string.Format("{0}", GameManager.Inst.JumpCount());
     }
 
+<<<<<<< HEAD
     public void AddHearts(int num)
     {
         if (num > hearts.transform.childCount)
@@ -82,6 +89,10 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+=======
+    public void Hearts(int num)
+    {
+>>>>>>> minyoung
         for (int i = 0; i < hearts.transform.childCount; i++)
         {
             hearts.transform.GetChild(i).gameObject.SetActive(false);
@@ -92,9 +103,12 @@ public class UIManager : MonoBehaviour
             hearts.transform.GetChild(i).gameObject.SetActive(true);
         }
     }
+<<<<<<< HEAD
 
     public void SetGauge_AI(int value)
     {
         gauge_AI.value = (float)value / (float) maxValue;
     }
+=======
+>>>>>>> minyoung
 }

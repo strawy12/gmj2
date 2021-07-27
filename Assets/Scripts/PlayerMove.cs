@@ -6,14 +6,20 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float jumpPower = 0;
     [SerializeField] private float speed = 5f;
+<<<<<<< HEAD
     
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private GameObject bottom = null;
+=======
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float gravity;
+>>>>>>> minyoung
 
     private Transform cameraTransform;
     Rigidbody2D rigid = null;
     Collider2D col = null;
     SpriteRenderer spriteRenderer;
+<<<<<<< HEAD
     
 
     private int jumpCnt = 0;
@@ -27,6 +33,14 @@ public class PlayerMove : MonoBehaviour
     private bool isDamage = false;
     private bool isShield = false;
     private bool isDouble = false;
+=======
+
+    private int jumpCnt = 0;
+    private int maxCnt = 2;
+    private int hp = 3;
+
+    private bool isDamage = false;
+>>>>>>> minyoung
 
 
     void Start()
@@ -34,8 +48,11 @@ public class PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+<<<<<<< HEAD
         origin_speed = speed;
         origin_jumpPower = jumpPower;
+=======
+>>>>>>> minyoung
         cameraTransform = Camera.main.transform;
     }
 
@@ -43,6 +60,23 @@ public class PlayerMove : MonoBehaviour
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         cameraTransform.position = new Vector3(transform.position.x + 7f, 0f, -10f);
+<<<<<<< HEAD
+=======
+
+        if (transform.position.y < cameraTransform.position.y - 7f)
+        {
+            transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 3f);
+            rigid.velocity = Vector2.zero;
+            rigid.gravityScale = 0f;
+            StartCoroutine(Damaged());
+        }
+
+        else
+        {
+            rigid.gravityScale = gravity;
+        }
+
+>>>>>>> minyoung
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             if (GameManager.Inst.JumpCount() <= 0) return;
@@ -71,20 +105,29 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
 
+<<<<<<< HEAD
         if(Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/) //사랑하는 우리 준무썜에게 물어볼꺼(물어보면서 같이 줌아웃 하는법 물어보기)
         {
             transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
             //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z);
+=======
+        if (Input.GetKey(KeyCode.LeftShift)/* && IsGrounded()*/)
+        {
+            transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
+>>>>>>> minyoung
         }
 
         else
         {
             transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
         }
+<<<<<<< HEAD
 
             
             
         
+=======
+>>>>>>> minyoung
     }
 
     private bool IsGrounded()
@@ -94,6 +137,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+<<<<<<< HEAD
 
         if (collision.gameObject.CompareTag("Item"))
         {
@@ -173,10 +217,31 @@ public class PlayerMove : MonoBehaviour
         {
             hp++;
         }
+=======
+        if (isDamage) return;
+
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            StartCoroutine(Damaged());
+        }
+    }
+
+    private IEnumerator Damaged()
+    {
+        if (hp == 1)
+        {
+            GameManager.Inst.GameOver();
+        }
+
+        isDamage = true;
+        hp--;
+        UIManager.Inst.Hearts(hp);
+>>>>>>> minyoung
 
         for (int i = 0; i < 4; i++)
         {
             spriteRenderer.enabled = false;
+<<<<<<< HEAD
             yield return new WaitForSeconds(0.15f);
             spriteRenderer.enabled = true;
             yield return new WaitForSeconds(0.15f);
@@ -206,5 +271,13 @@ public class PlayerMove : MonoBehaviour
             Instantiate(bottom, curPos, Quaternion.identity);
             yield return new WaitForSeconds(0.2f);
         }
+=======
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        isDamage = false;
+>>>>>>> minyoung
     }
 }
