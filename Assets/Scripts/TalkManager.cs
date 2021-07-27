@@ -44,6 +44,7 @@ public class TalkManager : MonoBehaviour
 
     public string GetTalk(int id, int talkIndex)
     {
+        if (talkIndex > 12) return null;
         return talkData[id][talkIndex];
     }
 }
