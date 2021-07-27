@@ -60,7 +60,7 @@ public class PoolManager : MonoBehaviour
         item_5_List = new List<GameObject>();
     }
 
-   
+
 
     public GameObject MakeObj(string type)
     {
