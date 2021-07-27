@@ -16,7 +16,7 @@ public class UpObstacle : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.x - GameManager.Inst.PlayerMove.gameObject.transform.position.x < 5f)
+        if (transform.localPosition.x - GameManager.Inst.playerMove.gameObject.transform.position.x < 5f)
         {
             if (transform.localPosition.y > maxPosY) return;
 

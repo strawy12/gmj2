@@ -35,18 +35,21 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gms[0].gameObject);
     }
 
+    [SerializeField] GameObject[] stage = null;
     private float maxTime = 1f;
     private float timer = 0f;
     private int jumpCnt = 4;
+    private int stageNum = 0;
 
     private float minPosY = -6f;
-    public PlayerMove PlayerMove { get; private set; }
+    public PlayerMove playerMove { get; private set; }
     public PoolManager pool { get; private set; }
 
     private void Start()
     {
-        PlayerMove = FindObjectOfType<PlayerMove>();
-        
+        playerMove = FindObjectOfType<PlayerMove>();
+        pool = FindObjectOfType<PoolManager>();
+        //StartCoroutine(SelectStage());
     }
 
     void Update()
@@ -91,4 +94,17 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
     }
+
+    //private IEnumerator SelectStage()
+    //{
+    //    while (playerMove.GetHp() != 0)
+    //    {
+    //        stageNum = Random.Range(1, 11);
+
+    //        stage[stageNum].transform.position = 
+    //    }
+        
+
+
+    //}
 }

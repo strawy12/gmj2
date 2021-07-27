@@ -19,7 +19,7 @@ public class SwingObstacle : MonoBehaviour
     private void Update()
     {
         if (isStop) return;
-        if(transform.localPosition.x -GameManager.Inst.PlayerMove.gameObject.transform.position.x < 6f)
+        if(transform.localPosition.x -GameManager.Inst.playerMove.gameObject.transform.position.x < 6f)
         {
             if (angle > maxAngle)
             {

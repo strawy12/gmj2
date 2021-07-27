@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5367190407549985020}
   - component: {fileID: 5367190407549985023}
   - component: {fileID: 5367190407549985022}
-  - component: {fileID: 5367190407549985021}
+  - component: {fileID: -4920408972513765737}
   m_Layer: 3
   m_Name: MovingBottom
   m_TagString: Untagged
@@ -132,7 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &5367190407549985021
+--- !u!114 &-4920408972513765737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,6 +141,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5367190407549985008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0e141b39edb55438282ce0321b87db, type: 3}
+  m_Script: {fileID: 11500000, guid: d91c9fe348c84234e8a2fa35bba4fabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTime: 1
+  speed: 3
+  leftright: 1

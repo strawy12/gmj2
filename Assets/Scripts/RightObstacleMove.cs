@@ -24,7 +24,7 @@ public class RightObstacleMove : MonoBehaviour
     void Update()
     {
         if (transform.localPosition.x > maxPosX) return;
-        if (GameManager.Inst.PlayerMove.gameObject.transform.position.x > transform.localPosition.x  && VecComparison(GameManager.Inst.PlayerMove.gameObject.transform.position.x, transform.localPosition.x))
+        if (GameManager.Inst.playerMove.gameObject.transform.position.x > transform.localPosition.x  && VecComparison(GameManager.Inst.playerMove.gameObject.transform.position.x, transform.localPosition.x))
         {
             isStop = false;
         }

@@ -42,27 +42,27 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-        if (Mathf.Abs(transform.position.y) < Mathf.Abs(cameraTransform.position.y) - 7f)
-        {
-            transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 3f);
-            rigid.velocity = Vector2.zero;
-            rigid.gravityScale = 0f;
-            if (isDamage) return;
+        //if (Mathf.Abs(transform.position.y) < Mathf.Abs(cameraTransform.position.y) - 7f)
+        //{
+        //    transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 3f);
+        //    rigid.velocity = Vector2.zero;
+        //    rigid.gravityScale = 0f;
+        //    if (isDamage) return;
 
-            if (hp == 1)
-            {
-                GameManager.Inst.GameOver();
-            }
+        //    if (hp == 1)
+        //    {
+        //        GameManager.Inst.GameOver();
+        //    }
 
-            hp--;
-            StartCoroutine(Damaged());
-            UIManager.Inst.SubHearts(hp);
-        }
+        //    hp--;
+        //    StartCoroutine(Damaged());
+        //    UIManager.Inst.SubHearts(hp);
+        //}
 
-        else
-        {
-            rigid.gravityScale = gravity;
-        }
+        //else
+        //{
+        //    rigid.gravityScale = gravity;
+        //}
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -94,12 +94,12 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/)
         {
-            transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
+            transform.localScale = new Vector3(0.6f, 0.3f, 0.6f);
         }
 
         else
         {
-            transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
+            transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
     }
 
@@ -164,7 +164,6 @@ public class PlayerMove : MonoBehaviour
             {
                 GameManager.Inst.GameOver();
             }
-
             hp--;
             StartCoroutine(Damaged());
             UIManager.Inst.SubHearts(hp);
@@ -181,6 +180,10 @@ public class PlayerMove : MonoBehaviour
         return false;
     }
 
+    public int GetHp()
+    {
+        return hp;
+    }
     private IEnumerator Damaged()
     {
         isDamage = true;

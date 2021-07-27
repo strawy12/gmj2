@@ -17,7 +17,7 @@ public class DownObj : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.x - GameManager.Inst.PlayerMove.gameObject.transform.position.x < 2f)
+        if (transform.localPosition.x - GameManager.Inst.playerMove.gameObject.transform.position.x < 2f)
         {
             if (transform.localPosition.y > maxPosY)
             {

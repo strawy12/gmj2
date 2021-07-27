@@ -6,7 +6,7 @@ public class DownBottom : MonoBehaviour
 {
 
     Rigidbody2D rigid = null;
-
+    
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -17,7 +17,16 @@ public class DownBottom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            rigid.gravityScale = 1;
+            StartCoroutine(DownMove());
         }
+        
+    }
+
+    private IEnumerator DownMove()
+    {
+        yield return new WaitForSeconds(0.5f);
+        rigid.constraints = RigidbodyConstraints2D.FreezePositionX;
+        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rigid.gravityScale = 1;
     }
 }

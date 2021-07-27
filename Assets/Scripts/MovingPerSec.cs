@@ -23,7 +23,7 @@ public class MovingPerSec : MonoBehaviour
 
     void Update()
     {
-        if(Mathf.Abs(transform.localPosition.x - GameManager.Inst.PlayerMove.gameObject.transform.position.x) > distance) return;
+        if(Mathf.Abs(transform.localPosition.x - GameManager.Inst.playerMove.gameObject.transform.position.x) > distance) return;
         if (timer > second) return;
 
         timer += Time.deltaTime;

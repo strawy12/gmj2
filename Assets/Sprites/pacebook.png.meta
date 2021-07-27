@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: 947cf6611abf4764f84c26df4d71df59
+guid: edc59e26032902b4f87f69028e47f4dc
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 6613759835262555473
-    second: siba_t (1)_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,28 +101,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: siba_t (1)_0
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 0
-        width: 36
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5171865, y: 0.7952045}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 155129a678bc8cb50800000000000000
-      internalID: 6613759835262555473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

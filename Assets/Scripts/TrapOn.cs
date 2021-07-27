@@ -22,14 +22,14 @@ public class TrapOn : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                Instantiate(shoongPrefab, new Vector3(GameManager.Inst.PlayerMove.gameObject.transform.position.x+20+i, -2+addy, 0), Quaternion.identity);
+                Instantiate(shoongPrefab, new Vector3(GameManager.Inst.playerMove.gameObject.transform.position.x+20+i, -2+addy, 0), Quaternion.identity);
                 addy += 1f;
             }
             addy = 0f;
 
             for (int i = 0; i < 6; i++)
             {
-                Instantiate(shoongPrefab, new Vector3(GameManager.Inst.PlayerMove.gameObject.transform.position.x + 24 + i, 4 + addy, 0), Quaternion.identity);
+                Instantiate(shoongPrefab, new Vector3(GameManager.Inst.playerMove.gameObject.transform.position.x + 24 + i, 4 + addy, 0), Quaternion.identity);
                 addy -= 0.9f;
             }
             addy = 0f;

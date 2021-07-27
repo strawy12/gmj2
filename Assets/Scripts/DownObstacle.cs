@@ -9,6 +9,7 @@ public class DownObstacle : MonoBehaviour
 
     private bool isStop = false;
     private bool isDestroy = false;
+    [SerializeField] private float distance = 8f;
 
     void Start()
     {
@@ -18,7 +19,8 @@ public class DownObstacle : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(transform.localPosition.x - GameManager.Inst.PlayerMove.gameObject.transform.position.x) > 8f) return;
+        if (isStop) return;
+        if (Mathf.Abs(transform.localPosition.x - GameManager.Inst.playerMove.gameObject.transform.position.x) > distance) return;
 
         if (!isDestroy)
         {
@@ -27,7 +29,7 @@ public class DownObstacle : MonoBehaviour
         }
 
         isStop = true;
-        rigid.gravityScale = 10f;
+        rigid.gravityScale = 8f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
