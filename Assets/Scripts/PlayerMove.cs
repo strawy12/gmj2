@@ -56,10 +56,6 @@ public class PlayerMove : MonoBehaviour
 
             hp--;
             StartCoroutine(Damaged());
-<<<<<<< HEAD
-            hp--;
-=======
->>>>>>> cheoljin
             UIManager.Inst.SubHearts(hp);
         }
 
@@ -98,16 +94,9 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/)
         {
-
             transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
-<<<<<<< HEAD
         }
 
-=======
-
-        }
-
->>>>>>> cheoljin
         else
         {
             transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);

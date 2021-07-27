@@ -5,27 +5,22 @@ using UnityEngine;
 public class UpObstacle : MonoBehaviour
 {
     private Collider2D col;
-    [SerializeField] private float maxPosY;  
+    [SerializeField] private float maxPosY;
+    [SerializeField] private float speed = 7f;
 
     void Start()
     {
         col = GetComponent<Collider2D>();
-<<<<<<< HEAD
-
-         maxPosY = transform.localPosition.y + maxPosY;
-        
-=======
-        maxPosY = -2;
->>>>>>> cheoljin
+        maxPosY = transform.localPosition.y + maxPosY;
     }
 
     void Update()
     {
-        if (transform.localPosition.x - GameManager.Inst.PlayerMove.gameObject.transform.position.x < 3f)
+        if (transform.localPosition.x - GameManager.Inst.PlayerMove.gameObject.transform.position.x < 5f)
         {
             if (transform.localPosition.y > maxPosY) return;
 
-            transform.Translate(Vector2.up * Time.deltaTime * 7f);
+            transform.Translate(Vector2.up * Time.deltaTime * speed);
         }
     }
 
