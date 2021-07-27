@@ -3,21 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Obstacle
-<<<<<<< HEAD
-=======
-  - Bottom
->>>>>>> junseo
-  - Item
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Bottom
+  - 
   - Water
   - UI
-  - Obstacle
+  - 
   - 
   - 
   - 
