@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private float maxTime = 1f;
     private float timer = 0f;
-    private int jumpCnt = 3;
+    private int jumpCnt = 4;
 
     private float minPosY = -6f;
     public PlayerMove PlayerMove { get; private set; }
@@ -46,11 +46,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         PlayerMove = FindObjectOfType<PlayerMove>();
+        
     }
 
     void Update()
     {
-        if (jumpCnt >= 3) return;
+        if (jumpCnt >= 4) return;
 
         timer += Time.deltaTime;
 

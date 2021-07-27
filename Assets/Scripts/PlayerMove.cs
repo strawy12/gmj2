@@ -88,15 +88,10 @@ public class PlayerMove : MonoBehaviour
         {
             transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
             //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z);
-            if (Input.GetKey(KeyCode.LeftShift)/* && IsGrounded()*/)
-            {
-                transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
-            }
-
-            else
-            {
-                transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
-            }
+        }
+        else
+        {
+            transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
         }
     }
 
