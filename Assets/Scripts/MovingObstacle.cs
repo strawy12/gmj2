@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovingObstacle : MonoBehaviour
 {
+    [SerializeField]
     private float maxTime = 1f;
     private float timer = 0f;
 
