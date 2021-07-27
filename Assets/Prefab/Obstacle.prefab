@@ -11,10 +11,6 @@ GameObject:
   - component: {fileID: 746463660404644439}
   - component: {fileID: 746463660404644441}
   - component: {fileID: 746463660404644438}
-<<<<<<< HEAD
-  - component: {fileID: -100488641619889857}
-=======
->>>>>>> cheoljin
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -113,7 +109,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34969887, y: 0.41404438}
   m_EdgeRadius: 0
-<<<<<<< HEAD
 --- !u!114 &-100488641619889857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,5 +121,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368c47a6f03e3f34c87ea544a687602c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
->>>>>>> cheoljin

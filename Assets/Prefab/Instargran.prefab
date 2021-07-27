@@ -11,11 +11,7 @@ GameObject:
   - component: {fileID: 6590099784286290284}
   - component: {fileID: 7351635217989551068}
   - component: {fileID: 5217503552250755990}
-<<<<<<< HEAD
   - component: {fileID: -7382020701412866780}
-=======
-  - component: {fileID: 3690542327679302269}
->>>>>>> cheoljin
   m_Layer: 0
   m_Name: Instargran
   m_TagString: Item
@@ -114,11 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.25, y: 2.25}
   m_EdgeRadius: 0
-<<<<<<< HEAD
 --- !u!114 &-7382020701412866780
-=======
---- !u!114 &3690542327679302269
->>>>>>> cheoljin
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,8 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b57288af935ae4dbd172bc74397349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  name: 
-=======
   name: Instargram
->>>>>>> cheoljin
