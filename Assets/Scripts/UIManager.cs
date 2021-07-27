@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
             return inst;
         }
     }
-
     private void Awake()
     {
         UIManager[] ums = FindObjectsOfType<UIManager>();
@@ -42,11 +41,6 @@ public class UIManager : MonoBehaviour
     Text jumpCount;
     [SerializeField]
     GameObject hearts;
-    [SerializeField]
-    Slider gauge_AI;
-
-    private int maxValue = 100;
-    private int addHeart = 0;
 
     void Update()
     {
@@ -54,34 +48,8 @@ public class UIManager : MonoBehaviour
         jumpCount.text = string.Format("{0}", GameManager.Inst.JumpCount());
     }
 
-    public void AddHearts(int num)
+    public void Hearts(int num)
     {
-        if (num > hearts.transform.childCount)
-        {
-            GameObject heart;
-            int addnum = num - hearts.transform.childCount;
-            for (int i = 0; i < hearts.transform.childCount; i++)
-            {
-                heart = hearts.transform.GetChild(i).gameObject;
-                heart.SetActive(true);
-                if (addnum != 0)
-                {
-                    heart.GetComponent<Image>().color = new Color(0, 0, 1);
-                    addnum--;
-                    addHeart++;
-                }
-            }
-        }
-    }
-    public void SubHearts(int num)
-    {
-        if (addHeart != 0)
-        {
-            hearts.transform.GetChild(addHeart -1).gameObject.GetComponent<Image>().color = new Color(1, 1, 1);
-            addHeart--;
-            return;
-        }
-
         for (int i = 0; i < hearts.transform.childCount; i++)
         {
             hearts.transform.GetChild(i).gameObject.SetActive(false);
@@ -91,10 +59,5 @@ public class UIManager : MonoBehaviour
         {
             hearts.transform.GetChild(i).gameObject.SetActive(true);
         }
-    }
-
-    public void SetGauge_AI(int value)
-    {
-        gauge_AI.value = (float)value / (float) maxValue;
     }
 }

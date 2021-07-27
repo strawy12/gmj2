@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 746463660404644439}
   - component: {fileID: 746463660404644441}
   - component: {fileID: 746463660404644438}
-  - component: {fileID: 746463660404644440}
+  - component: {fileID: 7968921582668223787}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: UpObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746463660404644436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.45, y: 1.83, z: 0.78444993}
-  m_LocalScale: {x: 5.1159573, y: 5.203478, z: 0.18248552}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 20, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36327225, y: 0.41194943}
   m_EdgeRadius: 0
---- !u!114 &746463660404644440
+--- !u!114 &7968921582668223787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,6 +119,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 746463660404644436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368c47a6f03e3f34c87ea544a687602c, type: 3}
+  m_Script: {fileID: 11500000, guid: f35503e6d62620349bb0ce05d68a1013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
