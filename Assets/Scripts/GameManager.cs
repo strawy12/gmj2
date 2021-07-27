@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour
     {
         GameManager[] gms = FindObjectsOfType<GameManager>();
 
-        for(int i = 0; i < gms.Length; i++)
+        for (int i = 0; i < gms.Length; i++)
         {
-            if(0 < i)
+            if (0 < i)
             {
                 Destroy(gms[i].gameObject);
             }
@@ -38,10 +38,18 @@ public class GameManager : MonoBehaviour
     private float maxTime = 1f;
     private float timer = 0f;
     private int jumpCnt = 3;
+    private Transform trns = null;
+    public PoolManager pool  {get; private set;}
 
+    private void Start()
+    {
+        trns = FindObjectOfType<Transform>();
+        pool = FindObjectOfType<PoolManager>();
+    }
 
     void Update()
-    { 
+    {
+        if (jumpCnt >= 3) return;
 
         timer += Time.deltaTime;
 
