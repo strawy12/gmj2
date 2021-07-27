@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObstacle : MonoBehaviour
+public class MovingBottom : MonoBehaviour
 {
+    [SerializeField]
     private float maxTime = 1f;
     private float timer = 0f;
 
@@ -13,16 +14,15 @@ public class MovingObstacle : MonoBehaviour
 
         if (timer <= maxTime)
         {
-            transform.Translate(Vector2.down * Time.deltaTime * 3f);
+            transform.Translate(Vector2.left * Time.deltaTime * 3f);
         }
 
         else if (timer > maxTime)
         {
-            transform.Translate(Vector2.up * Time.deltaTime * 3f);
+            transform.Translate(Vector2.right * Time.deltaTime * 3f);
 
             if (timer > maxTime * 2)
                 timer = 0f;
         }
     }
-
 }

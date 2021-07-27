@@ -49,6 +49,7 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = Vector2.zero;
             rigid.gravityScale = 0f;
             StartCoroutine(Damaged());
+            UIManager.Inst.SubHearts(hp);
         }
 
         else
@@ -88,16 +89,12 @@ public class PlayerMove : MonoBehaviour
         {
             transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
             //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z);
-            if (Input.GetKey(KeyCode.LeftShift)/* && IsGrounded()*/)
-            {
-                transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
-            }
-
-            else
-            {
-                transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
-            }
         }
+        else
+        {
+            transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
+        }
+        
     }
 
     private bool IsGrounded()
@@ -164,7 +161,7 @@ public class PlayerMove : MonoBehaviour
 
             hp--;
             StartCoroutine(Damaged());
-            //UIManager.Inst.SubHearts(hp);
+            UIManager.Inst.SubHearts(hp);
         }
     }
 
