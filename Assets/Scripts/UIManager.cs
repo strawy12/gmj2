@@ -41,6 +41,11 @@ public class UIManager : MonoBehaviour
     Text jumpCount;
     [SerializeField]
     GameObject hearts;
+    [SerializeField]
+    Slider gauge_AI;
+
+    private int maxValue = 100;
+    private int addHeart = 0;
 
     void Update()
     {
@@ -48,9 +53,8 @@ public class UIManager : MonoBehaviour
         jumpCount.text = string.Format("{0}", GameManager.Inst.JumpCount());
     }
 
-    public void Hearts(int num)
+    public void AddHearts(int num)
     {
-<<<<<<< HEAD
         if (num > hearts.transform.childCount)
         {
             GameObject heart;
@@ -77,8 +81,6 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-=======
->>>>>>> junseo
         for (int i = 0; i < hearts.transform.childCount; i++)
         {
             hearts.transform.GetChild(i).gameObject.SetActive(false);
@@ -88,5 +90,10 @@ public class UIManager : MonoBehaviour
         {
             hearts.transform.GetChild(i).gameObject.SetActive(true);
         }
+    }
+
+    public void SetGauge_AI(int value)
+    {
+        gauge_AI.value = (float)value / (float)maxValue;
     }
 }

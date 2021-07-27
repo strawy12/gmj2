@@ -871,6 +871,7 @@ MonoBehaviour:
   timerFill: {fileID: 1687067874}
   jumpCount: {fileID: 628232669}
   hearts: {fileID: 973650973}
+  gauge_AI: {fileID: 0}
 --- !u!4 &1159360025
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,6 +1171,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+  bottom: {fileID: 0}
+  gravity: 5
+  hp: 3
 --- !u!4 &1439315910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 746463660404644439, guid: a9628d1b7572bf847a1f5d74665582fa, type: 3}

@@ -38,22 +38,14 @@ public class GameManager : MonoBehaviour
     private float maxTime = 1f;
     private float timer = 0f;
     private int jumpCnt = 3;
-    private Transform trns = null;
-    public PoolManager pool  {get; private set;}
 
-<<<<<<< HEAD
     private float minPosY = -6f;
     public PlayerMove PlayerMove { get; private set; }
+    public PoolManager pool { get; private set; }
 
     private void Start()
     {
         PlayerMove = FindObjectOfType<PlayerMove>();
-=======
-    private void Start()
-    {
-        trns = FindObjectOfType<Transform>();
-        pool = FindObjectOfType<PoolManager>();
->>>>>>> junseo
     }
 
     void Update()

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +7,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpPower = 0;
     [SerializeField] private float speed = 5f;
     [SerializeField] private LayerMask layerMask;
-<<<<<<< HEAD
     [SerializeField] private GameObject bottom = null;
     [SerializeField] private float gravity;
-=======
->>>>>>> junseo
 
     private Transform cameraTransform;
     Rigidbody2D rigid = null;
@@ -20,9 +17,15 @@ public class PlayerMove : MonoBehaviour
 
     private int jumpCnt = 0;
     private int maxCnt = 2;
-    private int hp = 3;
+    [SerializeField] private int hp = 3;
+    private int gauge_AI = 0;
+
+    private float origin_speed = 0f;
+    private float origin_jumpPower = 0f;
 
     private bool isDamage = false;
+    private bool isShield = false;
+    private bool isDouble = false;
 
 
     void Start()
@@ -30,6 +33,8 @@ public class PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        origin_speed = speed;
+        origin_jumpPower = jumpPower;
         cameraTransform = Camera.main.transform;
     }
 
@@ -38,7 +43,6 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         cameraTransform.position = new Vector3(transform.position.x + 7f, 0f, -10f);
 
-<<<<<<< HEAD
         if (transform.position.y < cameraTransform.position.y - 7f)
         {
             transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 3f);
@@ -52,8 +56,6 @@ public class PlayerMove : MonoBehaviour
             rigid.gravityScale = gravity;
         }
 
-=======
->>>>>>> junseo
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             if (GameManager.Inst.JumpCount() <= 0) return;
@@ -82,8 +84,7 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
 
-<<<<<<< HEAD
-        if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/) //»ç¶ûÇÏ´Â ¿ì¸® ÁØ¹«›¿¡°Ô ¹°¾îº¼²¨(¹°¾îº¸¸é¼­ °°ÀÌ ÁÜ¾Æ¿ô ÇÏ´Â¹ý ¹°¾îº¸±â)
+        if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/) //ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ì¸® ï¿½Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½îº¼ï¿½ï¿½(ï¿½ï¿½ï¿½îº¸ï¿½é¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾Æ¿ï¿½ ï¿½Ï´Â¹ï¿½ ï¿½ï¿½ï¿½îº¸ï¿½ï¿½)
         {
             transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
             //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z);
@@ -91,12 +92,6 @@ public class PlayerMove : MonoBehaviour
             {
                 transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
             }
-=======
-        if(Input.GetKey(KeyCode.LeftShift)/* && IsGrounded()*/)
-        {
-            transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
-        }
->>>>>>> junseo
 
             else
             {
@@ -112,10 +107,56 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isDamage) return;
+
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            switch (collision.gameObject.GetComponent<Item>().name)
+            {
+                case "Instargram":
+                    isShield = true;
+                    origin_speed = speed;
+                    speed += 5f;
+                    jumpPower += 8f;
+                    rigid.gravityScale += 5f;
+                    StartCoroutine(Instargram());
+                    gauge_AI += 10;
+                    break;
+
+                case "Stair":
+                    StartCoroutine(SpawnBottom());
+                    gauge_AI += 10;
+                    break;
+
+                case "Baedal":
+                    hp += 2;
+                    //UIManager.Inst.AddHearts(hp);
+                    gauge_AI += 10;
+                    break;
+
+                case "Message":
+                    isDouble = true;
+                    StartCoroutine(Message());
+                    gauge_AI += 10;
+                    break;
+
+            }
+
+            Destroy(collision.gameObject);
+            UIManager.Inst.SetGauge_AI(gauge_AI);
+            if (gauge_AI >= 100)
+            {
+                GameManager.Inst.GameOver();
+            }
+            else if (gauge_AI > 70)
+            {
+
+            }
+        }
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
+            if (isDamage) return;
+
             if (hp == 1)
             {
                 GameManager.Inst.GameOver();
@@ -123,23 +164,37 @@ public class PlayerMove : MonoBehaviour
 
             hp--;
             StartCoroutine(Damaged());
-            UIManager.Inst.Hearts(hp);
+            //UIManager.Inst.SubHearts(hp);
         }
+    }
+
+    private bool VecComparison(Vector2 a, Vector2 b)
+    {
+        float dist = Vector2.Distance(a, b);
+        if (dist < 0.15f)
+        {
+            return true;
+        }
+        return false;
     }
 
     private IEnumerator Damaged()
     {
         isDamage = true;
+
+        if (isShield)
+        {
+            hp++;
+        }
+
         for (int i = 0; i < 4; i++)
         {
             spriteRenderer.enabled = false;
-            yield return new WaitForSeconds(0.1f)   ;
+            yield return new WaitForSeconds(0.15f);
             spriteRenderer.enabled = true;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.15f);
         }
-
         isDamage = false;
-<<<<<<< HEAD
     }
     private IEnumerator Instargram()
     {
@@ -163,7 +218,5 @@ public class PlayerMove : MonoBehaviour
             Instantiate(bottom, curPos, Quaternion.identity);
             yield return new WaitForSeconds(0.2f);
         }
-=======
->>>>>>> junseo
     }
 }

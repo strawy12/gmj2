@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FlyingObstacles : MonoBehaviour
 {
-    
     [SerializeField]
     private float speed = 0f;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -14,11 +14,6 @@ public class FlyingObstacles : MonoBehaviour
         {
             GameManager.Inst.pool.MakeObj("obstacle_1");
         }
-    }
-
-    private void Start()
-    {
-        
     }
 
     void Update()
