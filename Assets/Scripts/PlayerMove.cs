@@ -48,7 +48,16 @@ public class PlayerMove : MonoBehaviour
             transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 3f);
             rigid.velocity = Vector2.zero;
             rigid.gravityScale = 0f;
+            if (isDamage) return;
+
+            if (hp == 1)
+            {
+                GameManager.Inst.GameOver();
+            }
+
+            hp--;
             StartCoroutine(Damaged());
+            UIManager.Inst.SubHearts(hp);
         }
 
         else
@@ -86,17 +95,14 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/) //����ϴ� �츮 �ع������� �����(����鼭 ���� �ܾƿ� �ϴ¹� �����)
         {
-            transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
-            //transform.position = new Vector3(transform.position.x, -3.871605f, transform.position.z);
-            if (Input.GetKey(KeyCode.LeftShift)/* && IsGrounded()*/)
-            {
-                transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
-            }
 
-            else
-            {
-                transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
-            }
+            transform.localScale = new Vector3(1.4f, 0.6f, 1.4f);
+
+        }
+
+        else
+        {
+            transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
         }
     }
 
@@ -129,7 +135,7 @@ public class PlayerMove : MonoBehaviour
 
                 case "Baedal":
                     hp += 2;
-                    //UIManager.Inst.AddHearts(hp);
+                    UIManager.Inst.AddHearts(hp);
                     gauge_AI += 10;
                     break;
 
@@ -164,7 +170,7 @@ public class PlayerMove : MonoBehaviour
 
             hp--;
             StartCoroutine(Damaged());
-            //UIManager.Inst.SubHearts(hp);
+            UIManager.Inst.SubHearts(hp);
         }
     }
 
