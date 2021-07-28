@@ -94,6 +94,11 @@ public class TutorialPlayerMove : MonoBehaviour
         }
     }
 
+    public int Gethp()
+    {
+        return hp;
+    }
+
     private bool IsGrounded()
     {
         return Physics2D.OverlapBox(col.bounds.center, col.bounds.size, 180f, layerMask);
@@ -158,7 +163,7 @@ public class TutorialPlayerMove : MonoBehaviour
 
             hp--;
             StartCoroutine(Damaged());
-            //UIManager.Inst.SubHearts(hp);
+            UIManager.Inst.SubHearts(hp);
         }
     }
 

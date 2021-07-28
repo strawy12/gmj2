@@ -7,7 +7,8 @@ public class TutorialManager : MonoBehaviour
 {
     private TalkManager talkManager;
     private GameObject talkPanal;
-    [SerializeField]  private RectTransform arrowPyo;
+    private PlayerMove tutorialplayermove;
+    [SerializeField] private RectTransform arrowPyo;
     [SerializeField] private Text talkText;
     private int talkIndex;
 
@@ -15,15 +16,16 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         talkManager = FindObjectOfType<TalkManager>();
+        tutorialplayermove = FindObjectOfType<PlayerMove>();
         StartCoroutine(TutorialMain());
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log(arrowPyo.transform.position);
-            
+
         }
     }
     void Talk(int index)
@@ -35,40 +37,61 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator TutorialMain()
     {
-        for(int i = 0; i < 13; i++)
+        for (int i = 0; i < 17; i++)
         {
             Talk(i);
-            if(i == 0)
+            if (i == 0)
             {
                 yield return new WaitForSeconds(5f);
             }
-            else if(i == 2)
+            else if (i == 2)
             {
                 arrowPyo.gameObject.SetActive(true);
-                arrowPyo.position = new Vector3(56.4f, 9.5f);
+                arrowPyo.anchoredPosition = new Vector3(-509f, 466f);
                 yield return new WaitForSeconds(5f);
                 arrowPyo.gameObject.SetActive(false);
             }
-            else if(i == 3)
-            {
-                arrowPyo.gameObject.SetActive(true);    
-                arrowPyo.position = new Vector3(-395f, 367f);
-                yield return new WaitForSeconds(5f);
-            }
-            else if(i == 4)
+            else if (i == 3)
             {
                 arrowPyo.gameObject.SetActive(true);
-                Debug.Log(arrowPyo.transform.position); //= new Vector3(97.8f, 8.4f);
+                arrowPyo.anchoredPosition = new Vector3(-405f, 368f);
                 yield return new WaitForSeconds(5f);
+                arrowPyo.gameObject.SetActive(false);
             }
+            else if (i == 4)
+            {
+                arrowPyo.gameObject.SetActive(true);
+                arrowPyo.anchoredPosition = new Vector3(-559f, 235f);//= new Vector3(97.8f, 8.4f);
+                yield return new WaitForSeconds(5f);
+                arrowPyo.gameObject.SetActive(false);
+
+            }
+
+            else if (i == 10)
+            {
+                yield return new WaitForSeconds(4f);
+            }
+
+            else if (i == 11 && tutorialplayermove.Gethp() == 3)
+            {
+                i += 1;
+            }
+
+            else if (i == 14)
+            {
+                yield return new WaitForSeconds(7f);
+            }
+
             else
             {
                 yield return new WaitForSeconds(3f);
             }
+
+
+
+
+
+
         }
-        
-        
-        
-        
     }
 }
