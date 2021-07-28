@@ -103,6 +103,10 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public int Gethp()
+    {
+        return hp;
+    }
     private bool IsGrounded()
     {
         return Physics2D.OverlapBox(col.bounds.center, col.bounds.size, 180f, layerMask);

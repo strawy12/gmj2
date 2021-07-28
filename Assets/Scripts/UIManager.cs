@@ -86,10 +86,10 @@ public class UIManager : MonoBehaviour
             hearts.transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        //for (int i = 0; i < num; i++)
-        //{
-        //    hearts.transform.GetChild(i).gameObject.SetActive(true);
-        //}
+        for (int i = 0; i < num; i++)
+        {
+            hearts.transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 
     public void SetGauge_AI(int value)
