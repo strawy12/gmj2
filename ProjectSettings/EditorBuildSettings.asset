@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 01178f897c3be614eac360550d117386
+  - enabled: 1
+    path: Assets/Scenes/JunseoSee.unity
+    guid: 0e2515f983344d841a68b09d3d01cce8
+  - enabled: 1
+    path: Assets/Scenes/MapDesign.unity
+    guid: e0b9e5516f2f45641a26db28814bd579
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 46abce9a9ad55964da5cde281d7c7d14
   m_configObjects: {}
