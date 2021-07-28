@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -37,9 +38,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject[] stage = null;
     private float maxTime = 1f;
+    private float scoreTimer = 0f;
     private float timer = 0f;
     private int jumpCnt = 4;
     private int stageNum = 0;
+
+    private int nowScore;
+    private int highScore;
 
     private float minPosY = -6f;
     public PlayerMove playerMove { get; private set; }
@@ -47,6 +52,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt("Score", 0);
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        UIManager.Inst.UISetting(nowScore);
+
         playerMove = FindObjectOfType<PlayerMove>();
         pool = FindObjectOfType<PoolManager>();
         //StartCoroutine(SelectStage());
@@ -54,6 +63,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        scoreTimer += Time.deltaTime;
+
+        if(scoreTimer > 1f)
+        {
+            nowScore += 30;
+            scoreTimer = 0f;
+            UIManager.Inst.UISetting(nowScore);
+        }
+
         if (jumpCnt >= 4) return;
 
         timer += Time.deltaTime;
@@ -103,7 +121,7 @@ public class GameManager : MonoBehaviour
 
     //        stage[stageNum].transform.position = 
     //    }
-        
+
 
 
     //}
