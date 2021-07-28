@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private GameObject bottom = null;
+    [SerializeField] private GameObject siya = null;
     [SerializeField] private float gravity;
 
     private Transform cameraTransform;
@@ -45,7 +46,7 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         if (transform.position.y < -7f)
         {
-            transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 3f);
+            transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 5f);
             rigid.velocity = Vector2.zero;
             rigid.gravityScale = 0f;
             if (isDamage) return;
@@ -152,9 +153,9 @@ public class PlayerMove : MonoBehaviour
             {
                 GameManager.Inst.GameOver();
             }
-            else if (gauge_AI > 70)
+            else if (gauge_AI > 50)
             {
-
+                StartCoroutine(Siya());
             }
         }
 
@@ -189,6 +190,13 @@ public class PlayerMove : MonoBehaviour
     public void SetSpeed(float speed)
     {
         this.speed += speed;
+    }
+
+    private IEnumerator Siya()
+    {
+        siya.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        siya.SetActive(false);
     }
     private IEnumerator Damaged()
     {

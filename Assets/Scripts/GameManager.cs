@@ -66,9 +66,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
-        //if (jumpCnt >= 4) return;
-=======
         scoreTimer += Time.deltaTime;
 
         if(scoreTimer > 1f)
@@ -79,7 +76,6 @@ public class GameManager : MonoBehaviour
         }
 
         if (jumpCnt >= 4) return;
->>>>>>> minyoung
 
         timer += Time.deltaTime;
 
@@ -160,17 +156,12 @@ public class GameManager : MonoBehaviour
                 stageObject = Instantiate(stage[stageNum], stagePos, Quaternion.identity);
             }
 
-<<<<<<< HEAD
             else if (nowstageNum == 4)
             {
                 stagePos = new Vector2(stageObject.transform.position.x + 170f, -5.18f);
                 stageObject = Instantiate(stage[stageNum], stagePos, Quaternion.identity);
             }
-=======
-    //        stage[stageNum].transform.position = 
-    //    }
 
->>>>>>> minyoung
 
             else if (nowstageNum == 5)
             {
