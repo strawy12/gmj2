@@ -43,6 +43,10 @@ public class UIManager : MonoBehaviour
     GameObject hearts;
     [SerializeField]
     Slider gauge_AI;
+    [SerializeField]
+    Text score;
+    [SerializeField]
+    Text highScore;
 
     private int maxValue = 100;
     private int addHeart = 0;
@@ -95,5 +99,22 @@ public class UIManager : MonoBehaviour
     public void SetGauge_AI(int value)
     {
         gauge_AI.value = (float)value / (float)maxValue;
+    }
+
+    public void UISetting(int addscore)
+    {
+        if(addscore > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", addscore);
+            highScore.text = string.Format("HIGHSCORE {0}", addscore);
+        }
+        else
+        {
+            int high = PlayerPrefs.GetInt("HighScore", 0);
+            highScore.text = string.Format("HIGHSCORE {0}", high);
+        }
+
+        score.text = string.Format("SCORE {0}", addscore);
+        PlayerPrefs.SetInt("Score", addscore);
     }
 }
