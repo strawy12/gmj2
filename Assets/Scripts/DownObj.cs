@@ -9,6 +9,8 @@ public class DownObj : MonoBehaviour
     [SerializeField]
     private float speed = 7f;
 
+    [SerializeField] private float distance = 2f;
+
     void Start()
     {
         col = GetComponent<Collider2D>();
@@ -17,7 +19,7 @@ public class DownObj : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.x - GameManager.Inst.playerMove.gameObject.transform.position.x < 2f)
+        if (transform.localPosition.x - GameManager.Inst.playerMove.gameObject.transform.position.x < distance)
         {
             if (transform.localPosition.y > maxPosY)
             {

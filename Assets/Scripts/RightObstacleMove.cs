@@ -12,11 +12,11 @@ public class RightObstacleMove : MonoBehaviour
         col = GetComponent<Collider2D>();
         if (transform.localPosition.y < 0)
         {
-            maxPosX = transform.localPosition.x + maxPosX;
+            maxPosX = transform.position.x + maxPosX;
         }
         else
         {
-            maxPosX = transform.localPosition.x - maxPosX;
+            maxPosX = transform.position.x - maxPosX;
         }
 
     }
@@ -24,7 +24,7 @@ public class RightObstacleMove : MonoBehaviour
     void Update()
     {
         if (transform.localPosition.x > maxPosX) return;
-        if (GameManager.Inst.playerMove.gameObject.transform.position.x > transform.localPosition.x  && VecComparison(GameManager.Inst.playerMove.gameObject.transform.position.x, transform.localPosition.x))
+        if (GameManager.Inst.playerMove.gameObject.transform.position.x > transform.position.x  && VecComparison(GameManager.Inst.playerMove.gameObject.transform.position.x, transform.position.x))
         {
             isStop = false;
         }

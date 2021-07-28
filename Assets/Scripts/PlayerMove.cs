@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour
     private bool isDamage = false;
     private bool isShield = false;
     private bool isDouble = false;
+    private bool isJump = false;
 
 
     void Start()
@@ -42,32 +43,32 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-        //if (Mathf.Abs(transform.position.y) < Mathf.Abs(cameraTransform.position.y) - 7f)
-        //{
-        //    transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 3f);
-        //    rigid.velocity = Vector2.zero;
-        //    rigid.gravityScale = 0f;
-        //    if (isDamage) return;
+        if (transform.position.y < -7f)
+        {
+            transform.position = new Vector2(transform.position.x, cameraTransform.position.y + 3f);
+            rigid.velocity = Vector2.zero;
+            rigid.gravityScale = 0f;
+            if (isDamage) return;
 
-        //    if (hp == 1)
-        //    {
-        //        GameManager.Inst.GameOver();
-        //    }
+            if (hp == 1)
+            {
+                GameManager.Inst.GameOver();
+            }
 
-        //    hp--;
-        //    StartCoroutine(Damaged());
-        //    UIManager.Inst.SubHearts(hp);
-        //}
+            hp--;
+            StartCoroutine(Damaged());
+            UIManager.Inst.SubHearts(hp);
+        }
 
-        //else
-        //{
-        //    rigid.gravityScale = gravity;
-        //}
+        else
+        {
+            rigid.gravityScale = gravity;
+        }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             if (GameManager.Inst.JumpCount() <= 0) return;
-
+            isJump = true;
             GameManager.Inst.SetJumpCount();
 
             jumpCnt++;
@@ -92,11 +93,11 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) /*&& IsGrounded()*/)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             transform.localScale = new Vector3(0.6f, 0.3f, 0.6f);
+            
         }
-
         else
         {
             transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
@@ -106,6 +107,7 @@ public class PlayerMove : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapBox(col.bounds.center, col.bounds.size, 180f, layerMask);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -184,10 +186,14 @@ public class PlayerMove : MonoBehaviour
     {
         return hp;
     }
+    public void SetSpeed(float speed)
+    {
+        this.speed += speed;
+    }
     private IEnumerator Damaged()
     {
         isDamage = true;
-
+        speed /= 2;
         if (isShield)
         {
             hp++;
@@ -200,7 +206,7 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.enabled = true;
             yield return new WaitForSeconds(0.15f);
         }
-
+        speed *= 2;
         isDamage = false;
     }
 

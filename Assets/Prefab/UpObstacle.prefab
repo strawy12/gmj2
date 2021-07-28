@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 746463660404644439}
   - component: {fileID: 746463660404644441}
   - component: {fileID: 746463660404644438}
+  - component: {fileID: 3604165259884841789}
   m_Layer: 0
   m_Name: UpObstacle
   m_TagString: Obstacle
@@ -109,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36068624, y: 0.4100099}
   m_EdgeRadius: 0
+--- !u!114 &3604165259884841789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746463660404644436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35503e6d62620349bb0ce05d68a1013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPosY: 12
+  speed: 7

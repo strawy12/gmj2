@@ -11,14 +11,14 @@ public class UpObstacle : MonoBehaviour
     void Start()
     {
         col = GetComponent<Collider2D>();
-        maxPosY = transform.localPosition.y + maxPosY;
+        maxPosY = transform.position.y + maxPosY;
     }
 
     void Update()
     {
-        if (transform.localPosition.x - GameManager.Inst.playerMove.gameObject.transform.position.x < 5f)
+        if (transform.position.x - GameManager.Inst.playerMove.gameObject.transform.position.x < 5f)
         {
-            if (transform.localPosition.y > maxPosY) return;
+            if (transform.position.y > maxPosY) return;
 
             transform.Translate(Vector2.up * Time.deltaTime * speed);
         }

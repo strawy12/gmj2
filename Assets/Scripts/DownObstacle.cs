@@ -20,7 +20,7 @@ public class DownObstacle : MonoBehaviour
     void Update()
     {
         if (isStop) return;
-        if (Mathf.Abs(transform.localPosition.x - GameManager.Inst.playerMove.gameObject.transform.position.x) > distance) return;
+        if (Mathf.Abs(transform.position.x - GameManager.Inst.playerMove.gameObject.transform.position.x) > distance) return;
 
         if (!isDestroy)
         {
